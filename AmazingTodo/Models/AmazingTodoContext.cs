@@ -18,5 +18,10 @@ namespace AmazingTodo.Models
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(
+                new MigrateDatabaseToLatestVersion<AmazingTodoContext, Migrations.Configuration>());
+        }
     }
 }
